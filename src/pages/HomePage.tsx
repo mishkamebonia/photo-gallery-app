@@ -19,15 +19,15 @@ const HomePage = () => {
   );
 
   const perPage = 20;
-  const order = "popular";
+  let currentPage = 1;
   const typingDelay = 1000;
 
   const fetchImages = async (query: string) => {
     try {
-      let apiUrl = `${url}/photos?page=1&client_id=${accessKey}&order_by=${order}&per_page=${perPage}`;
+      let apiUrl = `${url}/photos?page=${currentPage}&client_id=${accessKey}&order_by=popular&per_page=${perPage}`;
 
       if (query) {
-        apiUrl = `${url}/search/photos?page=1&client_id=${accessKey}&order_by=${order}&per_page=${perPage}&query=${query}`;
+        apiUrl = `${url}/search/photos?page=${currentPage}&client_id=${accessKey}&order_by=popular&per_page=${perPage}&query=${query}`;
       }
 
       const response = await fetch(apiUrl);
